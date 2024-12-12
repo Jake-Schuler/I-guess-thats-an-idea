@@ -7,12 +7,17 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag jake-schuler-igtai:$(date +%s)
+      run: docker build . --file Dockerfile --tag ghcr.io/${{ github.repository }}/jake-schuler-igtai:$(date +%Y%m%d%H%M%S)
+
+    - name: Push the Docker image
+      run: docker push ghcr.io/${{ github.repository }}/jake-schuler-igtai:$(date +%Y%m%d%H%M%S)
