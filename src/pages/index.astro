@@ -1,0 +1,28 @@
+---
+import json from './ideas.json';
+import '../styles/global.css';
+import Nav from '../components/nav.astro';
+
+let idea = json[Math.floor(Math.random() * json.length)];
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/js-dark.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>"I Guess That's An Idea" - Main</title>
+	</head>
+	<body class="bg-slate-700 text-white">
+		<Nav name="All Ideas" href="/all-ideas" />
+		<h1 class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 xl:text-4xl text-xl"><strong>"I Guess That's An Idea" generator</strong></h1>
+		<div class="inline-block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+			<p class="typed-out">{idea}</h1>
+		</div>
+		<script>
+			import 'boxicons'
+		</script>
+	</body>
+</html>

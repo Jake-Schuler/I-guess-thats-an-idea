@@ -1,0 +1,31 @@
+---
+import json from './ideas.json';
+import '../styles/global.css';
+import Nav from '../components/nav.astro';
+
+let ideas = json;
+
+let table = ideas.map((idea) => {
+	return `<tr class="border border-slate-500"><td>${idea}</td></tr>`
+})
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/js-dark.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>"I Guess That's An Idea" - All Ideas</title>
+	</head>
+	<body class="bg-slate-700 text-white">
+		<Nav name="Home" href="/" />
+		<div class="mt-12">
+			<table class="lg:absolute lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 inline-block" set:html={table}></table>
+		</div>
+		<script>
+			import 'boxicons'
+		</script>
+	</body>
+</html>

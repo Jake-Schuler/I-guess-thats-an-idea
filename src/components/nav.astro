@@ -1,0 +1,10 @@
+---
+const { name, href } = Astro.props
+---
+<div id="nav">
+    <list class="flex flex-row gap-4 absolute top-4 right-4">
+        <ul><a href="https://github.com/jake-schuler"><box-icon color="white" type="logo" name="github"></box-icon></i></a></ul>
+        <ul><a href={href}>{name}</a></ul>
+
+    </list>
+</div>
