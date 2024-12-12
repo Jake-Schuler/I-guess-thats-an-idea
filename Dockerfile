@@ -1,4 +1,6 @@
 FROM node:lts AS runtime
+LABEL org.opencontainers.image.source="https://github.com/jake-schuler/i-guess-thats-an-idea"
+
 WORKDIR /app
 
 COPY . .
